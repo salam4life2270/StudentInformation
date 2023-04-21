@@ -1,0 +1,66 @@
+﻿@page
+@model StudentInformation.Pages.ListModel
+@{
+}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/StudentInformation.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <p>The entry list is available on this page.</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Student[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Student[0].Module)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Student[0].Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Student[0].Grade)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Student)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Module)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Grade)
+                    </td>
+                    <td>
+                        <a asp-page="./Students/Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-page="./Students/Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-page="./Students/Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
